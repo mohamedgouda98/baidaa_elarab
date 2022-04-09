@@ -25,7 +25,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{route('admin.poeticType.index')}}">PoeticType</a></li>&nbsp;
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{URL::current()}}">Update  PoeticType</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{URL::current()}}"> Update PoeticType</a></li>
                         </ol>
                     </nav>
 
@@ -34,28 +34,7 @@
                 <div class="container">
                     <div class="row my-5 mx-auto">
                         <div class="col-lg-12 layout-spacing">
-                            <form action="{{route('admin.poeticType.update',[$poeticType])}}" method="post">
-                                @csrf
-                                @method('PUT')
-                                <div id="fuMultipleFile" class="col-lg-12 layout-spacing">
-
-                                    
-
-                                    <div class="form-group mb-4">
-                                        <label class="control-label"> Name:</label>
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid fparsley-error parsley-error @enderror" placeholder="Enter poeticType Name " value="{{old('name', $poeticType->name)}}">
-                                        @error('name')
-                                        <span class="invalid-feedback text-danger" role="alert">
-                                              <p>{{ $message }}</p>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                </div>
-
-
-                                <input type="submit" value="update" class="btn btn-primary ml-3 mt-3">
-                            </form>
+                               @include('admin.poeticType.form')
                         </div>
                     </div>
                 </div>
