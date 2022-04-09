@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\EraController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PoetController;
+use App\Http\Controllers\Admin\PoeticTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +42,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
         Route::put('/update/{poet}', [PoetController::class, 'update'])->name('update');
         Route::delete('/delete/{poet}', [PoetController::class, 'destroy'])->name('destroy');
     });
+    /*--- era Route---*/
+    Route::group(['prefix' => 'era', 'as' => 'era.'], function (){
+        Route::get('/index',[EraController::class,'index'])->name('index');
+        Route::get('/create',[EraController::class,'create'])->name('create');
+        Route::post('/store', [EraController::class, 'store'])->name('store');
+        Route::get('/edit/{era}', [EraController::class, 'edit'])->name('edit');
+        Route::put('/update/{era}', [EraController::class, 'update'])->name('update');
+        Route::delete('/delete/{era}', [EraController::class, 'destroy'])->name('destroy');
+
+    });
+
+    /*--- poeticType Route---*/
+    Route::group(['prefix' => 'poeticType', 'as' => 'poeticType.'], function (){
+        Route::get('/index',[PoeticTypeController::class,'index'])->name('index');
+        Route::get('/create',[PoeticTypeController::class,'create'])->name('create');
+        Route::post('/store', [PoeticTypeController::class, 'store'])->name('store');
+        Route::get('/edit/{poeticType}', [PoeticTypeController::class, 'edit'])->name('edit');
+        Route::put('/update/{poeticType}', [PoeticTypeController::class, 'update'])->name('update');
+        Route::delete('/delete/{poeticType}', [PoeticTypeController::class, 'destroy'])->name('destroy');
+
+    });
+
 
    /*---LogOut Route---*/
    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
