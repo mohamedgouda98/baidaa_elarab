@@ -258,65 +258,18 @@
                 <a href="#uiKit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        <span>UI Kit</span>
+                        <span>era</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="uiKit" data-parent="#topAccordion">
                     <li>
-                        <a href="ui_alerts.html"> Alerts </a>
+                        <a href="{{route('admin.era.index')}}"> Show eras </a>
                     </li>
                     <li>
-                        <a href="ui_avatar.html"> Avatar </a>
+                        <a href="{{route('admin.era.create')}}"> Add New era </a>
                     </li>
-                    <li>
-                        <a href="ui_badges.html"> Badges </a>
-                    </li>
-                    <li>
-                        <a href="ui_breadcrumbs.html"> Breadcrumbs </a>
-                    </li>
-                    <li>
-                        <a href="ui_buttons.html"> Buttons </a>
-                    </li>
-                    <li>
-                        <a href="ui_buttons_group.html"> Button Groups </a>
-                    </li>
-                    <li>
-                        <a href="ui_color_library.html"> Color Library </a>
-                    </li>
-                    <li>
-                        <a href="ui_dropdown.html"> Dropdown </a>
-                    </li>
-                    <li>
-                        <a href="ui_infobox.html"> Infobox </a>
-                    </li>
-                    <li>
-                        <a href="ui_jumbotron.html"> Jumbotron </a>
-                    </li>
-                    <li>
-                        <a href="ui_loader.html"> Loader </a>
-                    </li>
-                    <li>
-                        <a href="ui_pagination.html"> Pagination </a>
-                    </li>
-                    <li>
-                        <a href="ui_popovers.html"> Popovers </a>
-                    </li>
-                    <li>
-                        <a href="ui_progress_bar.html"> Progress Bar </a>
-                    </li>
-                    <li>
-                        <a href="ui_search.html"> Search </a>
-                    </li>
-                    <li>
-                        <a href="ui_tooltips.html"> Tooltips </a>
-                    </li>
-                    <li>
-                        <a href="ui_treeview.html"> Treeview </a>
-                    </li>
-                    <li>
-                        <a href="ui_typography.html"> Typography </a>
-                    </li>
+                    
                 </ul>
             </li>
 
@@ -324,54 +277,22 @@
                 <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <span>Tables</span>
+                        <span>PoeticType</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="tables"  data-parent="#topAccordion">
-                    <li>
-                        <a href="table_basic.html"> Basic </a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="#datatable" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> DataTables <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="datatable" data-parent="#datatable">
+                 
+                   
                             <li>
-                                <a href="table_dt_basic.html"> Basic </a>
-                            </li>
+                                <a href="{{route('admin.poeticType.index')}}"> show PoeticTyes </a>
+                            </li> 
                             <li>
-                                <a href="table_dt_basic-light.html"> Light </a>
+                                <a href="{{route('admin.poeticType.create')}}"> Add PoeticType </a>
                             </li>
-                            <li>
-                                <a href="table_dt_ordering_sorting.html"> Order Sorting </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_multi-column_ordering.html"> Multi-Column </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_multiple_tables.html"> Multiple Tables</a>
-                            </li>
-                            <li>
-                                <a href="table_dt_alternative_pagination.html"> Alt. Pagination</a>
-                            </li>
-                            <li>
-                                <a href="table_dt_custom.html"> Custom </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_range_search.html"> Range Search </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_html5.html"> HTML5 Export </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_live_dom_ordering.html"> Live DOM ordering </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_miscellaneous.html"> Miscellaneous </a>
-                            </li>
+                           
                         </ul>
-                    </li>
-                </ul>
-            </li>
+                  
 
             <li class="menu single-menu">
                 <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
