@@ -34,11 +34,10 @@
                 <div class="container">
                     <div class="row my-5 mx-auto">
                         <div class="col-lg-12 layout-spacing">
-  
-                            
-                                @include('admin.era.form')
-                               
-                           
+                            <form action="{{route('admin.era.update',[$era])}}" method="post">
+                           @method('PUT')
+                            @include('admin.era.form')
+
                         </div>
                     </div>
                 </div>

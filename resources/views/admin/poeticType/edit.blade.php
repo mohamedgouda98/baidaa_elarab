@@ -34,7 +34,9 @@
                 <div class="container">
                     <div class="row my-5 mx-auto">
                         <div class="col-lg-12 layout-spacing">
-                               @include('admin.poeticType.form')
+                            <form action="{{route('admin.poeticType.update',[$poeticType])}}" method="post">
+                                @method('PUT')
+                            @include('admin.poeticType.form')
                         </div>
                     </div>
                 </div>

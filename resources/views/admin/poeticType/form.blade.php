@@ -1,12 +1,4 @@
-@isset($poeticType)
-<form action="{{route('admin.poeticType.update',[$poeticType])}}" method="post">
-
-    @method('PUT')
-
-    @endisset
-
-    <form action="{{route('admin.poeticType.store')}}" method="post">
-        @csrf
+@csrf
         <div id="fuMultipleFile" class="col-lg-12 layout-spacing">
 
             <div class="form-group mb-4">
@@ -19,5 +11,5 @@
                 @enderror
             </div>
         </div>
-        <input type="submit" @isset($poeticType) value="update" @endisset value="store" class="btn btn-primary ml-3 mt-3">
+        <input type="submit" class="btn btn-primary ml-3 mt-3">
     </form>

@@ -34,6 +34,7 @@
                 <div class="container">
                     <div class="row my-5 mx-auto">
                         <div class="col-lg-12 layout-spacing">
+                            <form action="{{route('admin.era.store')}}" method="post">
                             @include('admin.era.form')
                         </div>
                     </div>

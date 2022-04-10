@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function (){
    /*---Home Dashboard Route---*/
-   Route::get('/index', [HomeController::class, 'index'])->name('dashboard');
+   Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
    /*---Countries Route---*/
     Route::group(['prefix' => 'country', 'as' => 'country.'], function (){
