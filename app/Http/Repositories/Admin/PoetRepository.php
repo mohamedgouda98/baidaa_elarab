@@ -4,25 +4,33 @@ namespace App\Http\Repositories\Admin;
 
 use App\Http\Interfaces\Admin\PoetInterface;
 use App\Http\Traits\CountryTrait;
+use App\Http\Traits\EraTrait;
 use App\Http\Traits\PoetTrait;
+use App\Http\Traits\Upload;
 use App\Models\Country;
+use App\Models\era;
 use App\Models\Poet;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PoetRepository implements PoetInterface
 {
-    use PoetTrait, CountryTrait;
+    use PoetTrait, CountryTrait, EraTrait, Upload;
 
     private Poet $poetModel;
     private Country $countryModel;
+    private era $eraModel;
 
-    public function __construct(Poet $poet, Country $country)
+    public function __construct(Poet $poet, Country $country, era $era)
     {
         $this->poetModel    = $poet;
         $this->countryModel = $country;
+        $this->eraModel     = $era;
     }
 
     public function index(): Factory|View|Application
@@ -35,18 +43,25 @@ class PoetRepository implements PoetInterface
     public function create(): Factory|View|Application
     {
         $countries = $this->getAllCountries();
+        $eras      = $this->getAllEras();
 
-        return \view('admin.poet.create', compact('countries'));
+        return \view('admin.poet.create', compact('countries', 'eras'));
     }
 
-    public function store($request)
+    public function store($request): Redirector|Application|RedirectResponse
     {
+
+        $file = $request->file('image');
+        $fileName = time(). '.' .$file->extension();
+        $this->uploadFile($file, $fileName, 'poets');
+
         $this->poetModel::create([
-            'name'        => $request->name,
-            'birthday'    => $request->birthday,
-            'title'       => $request->title,
-            'info'        => $request->info,
-            'country_id'  => $request->country
+            'name'            => $request->name,
+            'special'         => $request->special,
+            'description'     => $request->description,
+            'era_id'          => $request->era,
+            'country_id'      => $request->country,
+            'image'           => $fileName
         ]);
 
         Alert::success('success', 'Poet Added Successfully');
@@ -56,31 +71,35 @@ class PoetRepository implements PoetInterface
     public function edit($poet)
     {
         $countries = $this->getAllCountries();
+        $eras      = $this->getAllEras();
 
-        return \view('admin.poet.edit', compact('poet', 'countries'));
+        return \view('admin.poet.edit', compact('poet', 'countries', 'eras'));
     }
 
-    public function update($poet, $request)
+    public function update($poet, $request): Redirector|Application|RedirectResponse
     {
-        if ($poet) {
-            $poet->update([
-                'name'        => $request->name,
-                'birthday'    => $request->birthday,
-                'title'       => $request->title,
-                'info'        => $request->info,
-                'country_id'  => $request->country
-            ]);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time(). '.' .$file->extension();
+            $this->deleteFile('public/poets/'.$poet->image)  ;
+            $this->uploadFile($file, $fileName, 'poets');
         }
-
+        $poet->update([
+            'name'            => $request->name,
+            'special'         => $request->special,
+            'description'     => $request->description,
+            'era_id'          => $request->era,
+            'country_id'      => $request->country,
+            'image'           => $fileName ?? $poet->image
+        ]);
         Alert::success('success', 'Poet Updated Successfully');
         return redirect(route('admin.poet.index'));
     }
 
-    public function delete($poet)
+    public function delete($poet): RedirectResponse
     {
-        if ($poet) {
-            $poet->destroy($poet->id);
-        }
+        $this->deleteFile('public/poets/' . $poet->image);
+        $poet->destroy($poet->id);
         Alert::success('success', 'Poet Deleted Successfully');
         return back();
     }

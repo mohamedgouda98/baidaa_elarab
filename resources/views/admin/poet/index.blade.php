@@ -45,9 +45,10 @@
                                                 <th class="checkbox-column dt-no-sorting">#</th>
                                                 <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Birthday</th>
-                                                <th>Title</th>
-                                                <th>Info</th>
+                                                <th>Special</th>
+                                                <th>Description</th>
+                                                <th>Image</th>
+                                                <th>Era</th>
                                                 <th>Country</th>
                                                 <th class="text-center dt-no-sorting">Action</th>
                                             </tr>
@@ -59,9 +60,10 @@
                                                         <td class="checkbox-column"> {{$poet->id}} </td>
                                                         <td> {{$poet->id}} </td>
                                                         <td class="user-name">{{$poet->name}}</td>
-                                                        <td class="user-name">{{$poet->birthday}}</td>
-                                                        <td class="user-name">{{$poet->title}}</td>
-                                                        <td class="user-name">{!! $poet->info !!}</td>
+                                                        <td class="user-name">{{$poet->special}}</td>
+                                                        <td class="user-name">{!! $poet->description !!}</td>
+                                                        <td class="user-name"><img class="img-thumbnail" src="{{ asset('storage/poets') . '/' . $poet->image }}" alt=""></td>
+                                                        <td class="user-name">{!! $poet->era->name !!}</td>
                                                         <td class="user-name">{{$poet->country->current_name}}</td>
                                                         <td class="text-center">
                                                             <div class="btn-group">
