@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-   Add New Poet - Dashboard
+   Add New Poem - Dashboard
 @endsection
 
 @section('css')
@@ -26,8 +26,8 @@
                     <nav class="breadcrumb-one" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.poet.index')}}">Poets</a></li>&nbsp;
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{URL::current()}}">Add New Poet</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.poem.index')}}">Poems</a></li>&nbsp;
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{URL::current()}}">Add New Poem</a></li>
                         </ol>
                     </nav>
 
@@ -36,14 +36,14 @@
                 <div class="container">
                     <div class="row my-5 mx-auto">
                         <div class="col-lg-12 layout-spacing">
-                            <form action="{{route('admin.poet.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('admin.poem.store')}}" method="post">
                                 @csrf
                                 <div id="fuMultipleFile" class="col-lg-12 layout-spacing">
 
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Name:</label>
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid fparsley-error parsley-error @enderror" placeholder="Enter Your Name " value="{{old('name')}}" required>
-                                        @error('name')
+                                        <label class="control-label">Title:</label>
+                                        <input type="text" name="title" class="form-control @error('title') is-invalid fparsley-error parsley-error @enderror" placeholder="Enter Your Title " value="{{old('title')}}" required>
+                                        @error('title')
                                             <span class="invalid-feedback text-danger" role="alert">
                                               <p>{{ $message }}</p>
                                             </span>
@@ -51,9 +51,9 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Special:</label>
-                                        <input type="text" name="special" class="form-control @error('special') is-invalid fparsley-error parsley-error @enderror" placeholder="Enter Special " value="{{old('special')}}" required>
-                                        @error('special')
+                                        <label class="control-label">Body:</label>
+                                        <textarea name="body" class="form-control @error('body') is-invalid fparsley-error parsley-error @enderror" placeholder="Enter Body " required>{{old('body')}}</textarea>
+                                        @error('body')
                                         <span class="invalid-feedback text-danger" role="alert">
                                               <p>{{ $message }}</p>
                                             </span>
@@ -72,16 +72,26 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Country:</label>
-                                        <select name="country" class="form-control @error('country') is-invalid fparsley-error parsley-error @enderror" required>
-                                            <option>Select Country</option>
-                                            @isset($countries)
-                                                @foreach($countries as $country)
-                                                    <option value="{{ $country->id }}">{{ $country->current_name }}</option>
+                                        <label class="control-label">Verses count:</label>
+                                        <input type="text" name="verses_count" class="form-control @error('verses_count') is-invalid fparsley-error parsley-error @enderror" placeholder="Enter Your Verses Count " value="{{old('verses_count')}}" required>
+                                        @error('verses_count')
+                                        <span class="invalid-feedback text-danger" role="alert">
+                                              <p>{{ $message }}</p>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Poet:</label>
+                                        <select name="poet" class="form-control @error('poet') is-invalid fparsley-error parsley-error @enderror" required>
+                                            <option>Select Poet</option>
+                                            @isset($poets)
+                                                @foreach($poets as $poet)
+                                                    <option value="{{ $poet->id }}">{{ $poet->name }}</option>
                                                 @endforeach
                                             @endisset
                                         </select>
-                                        @error('country')
+                                        @error('poet')
                                         <span class="invalid-feedback text-danger" role="alert">
                                               <p>{{ $message }}</p>
                                             </span>
@@ -90,26 +100,16 @@
 
 
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Era:</label>
-                                        <select name="era" class="form-control @error('era') is-invalid fparsley-error parsley-error @enderror" required>
-                                            <option>Select Era</option>
-                                            @isset($eras)
-                                                @foreach($eras as $era)
-                                                    <option value="{{ $era->id }}">{{ $era->name }}</option>
+                                        <label class="control-label">Poetic Type:</label>
+                                        <select name="poetic_type" class="form-control @error('poetic_type') is-invalid fparsley-error parsley-error @enderror" required>
+                                            <option>Select Poetic Type</option>
+                                            @isset($poeticTypes)
+                                                @foreach($poeticTypes as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                 @endforeach
                                             @endisset
                                         </select>
-                                        @error('era')
-                                        <span class="invalid-feedback text-danger" role="alert">
-                                              <p>{{ $message }}</p>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Image:</label>
-                                        <input type="file" name="image" class="form-control @error('image') is-invalid fparsley-error parsley-error @enderror" required>
-                                        @error('image')
+                                        @error('poetic_type')
                                         <span class="invalid-feedback text-danger" role="alert">
                                               <p>{{ $message }}</p>
                                             </span>

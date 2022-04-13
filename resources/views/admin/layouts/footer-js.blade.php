@@ -18,6 +18,8 @@
 <script src="{{ URL::asset('assetsAdmin/assets/js/loader.js') }}"></script>
 <script src="{{ URL::asset('assetsAdmin/shard/custom.js') }}"></script>
 
+
+
 <!-- Sweet Alert -->
 @include('sweetalert::alert')
 <!--=====================================

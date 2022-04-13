@@ -22,14 +22,15 @@ class PoetUpdateRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['name' => "string", 'birthday' => "string", 'title' => "string", 'info' => "string", 'country' => "string"])] public function rules()
+    #[ArrayShape(['name' => "string", 'special' => "string", 'description' => "string", 'country' => "string", 'era' => "string", 'image' => "string"])] public function rules(): array
     {
         return [
-            'name'     => 'required|string|min:3',
-            'birthday' => 'required|date',
-            'title'    => 'required|string|min:3',
-            'info'     => 'required|string',
-            'country'  => 'required|exists:countries,id'
+            'name'           => 'required|string|min:3',
+            'special'        => 'required|string',
+            'description'    => 'required|string|min:3',
+            'country'        => 'required|exists:countries,id',
+            'era'            => 'required|exists:eras,id',
+            'image'          => 'file|mimes:png,jpg,jpeg,webp'
         ];
     }
 }

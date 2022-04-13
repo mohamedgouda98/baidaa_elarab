@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Poet - Dashboard
+    Poems - Dashboard
 @endsection
 
 @section('css')
@@ -20,7 +20,7 @@
                     <nav class="breadcrumb-one" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{URL::current()}}">Poet</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{URL::current()}}">Poems</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -32,7 +32,7 @@
                             <h4 class="">Countries</h4>
                         </div>
                         <div class="seperator-header text-right">
-                            <a href="{{route('admin.poet.create')}}"><h4 class="">Add New Poet</h4></a>
+                            <a href="{{route('admin.poem.create')}}"><h4 class="">Add New Poem</h4></a>
                         </div>
 
                         <div class="row layout-spacing">
@@ -44,27 +44,27 @@
                                             <tr>
                                                 <th class="checkbox-column dt-no-sorting">#</th>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Special</th>
+                                                <th>Title</th>
+                                                <th>Body</th>
                                                 <th>Description</th>
-                                                <th>Image</th>
-                                                <th>Era</th>
-                                                <th>Country</th>
+                                                <th>Verses count</th>
+                                                <th>Poet</th>
+                                                <th>Poetic Type</th>
                                                 <th class="text-center dt-no-sorting">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @isset($poets)
-                                                @foreach($poets as $poet)
+                                            @isset($poems)
+                                                @foreach($poems as $poem)
                                                     <tr>
-                                                        <td class="checkbox-column"> {{$poet->id}} </td>
-                                                        <td> {{$poet->id}} </td>
-                                                        <td class="user-name">{{$poet->name}}</td>
-                                                        <td class="user-name">{{$poet->special}}</td>
-                                                        <td class="user-name">{!! $poet->description !!}</td>
-                                                        <td class="user-name"><img class="img-thumbnail" src="{{ asset('storage/poets') . '/' . $poet->image }}" alt=""></td>
-                                                        <td class="user-name">{!! $poet->era->name !!}</td>
-                                                        <td class="user-name">{{$poet->country->current_name}}</td>
+                                                        <td class="checkbox-column"> {{$poem->id}} </td>
+                                                        <td> {{$poem->id}} </td>
+                                                        <td class="user-name">{{$poem->title}}</td>
+                                                        <td class="user-name">{!! $poem->body !!}</td>
+                                                        <td class="user-name">{!! $poem->description !!}</td>
+                                                        <td class="user-name">{{ $poem->verses_count }}</td>
+                                                        <td class="user-name">{{ $poem->poet->name }}</td>
+                                                        <td class="user-name">{{$poem->poeticTypes->name}}</td>
                                                         <td class="text-center">
                                                             <div class="btn-group">
                                                                 <button type="button"
@@ -81,9 +81,9 @@
                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuReference25">
 
                                                                     <a class="dropdown-item btn btn-sm"
-                                                                       href="{{ route('admin.poet.edit', $poet) }}">Edit</a>
+                                                                       href="{{ route('admin.poem.edit', $poem) }}">Edit</a>
                                                                     <div class="dropdown-divider"></div>
-                                                                    <form method="post" action="{{ route('admin.poet.destroy', $poet) }}">
+                                                                    <form method="post" action="{{ route('admin.poem.destroy', $poem) }}">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button data-name="order"
