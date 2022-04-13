@@ -26,7 +26,7 @@ class UserUpdateRequest extends FormRequest
     {
        
         return  array_merge(User::rules(),[
-            'email'=>'required|email|exists:users',
+            'email'=>'required|email',
         ]) ;
     }
 }

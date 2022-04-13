@@ -35,7 +35,7 @@ Add New User - Dashboard
                 <div class="row my-5 mx-auto">
                     <div class="col-lg-12 layout-spacing">
                         <form action="{{route('admin.user.store')}}" method="post">
-                        @include(admin.users.form);
+                        @include('admin.users.form')
                             <input type="submit" class="btn btn-primary ml-3 mt-3">
                         </form>
                     </div>
