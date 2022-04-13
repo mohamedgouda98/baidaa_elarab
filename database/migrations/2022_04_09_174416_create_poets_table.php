@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('poets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('birthday');
-            $table->string('title');
-            $table->text('info');
+            $table->string('image');
+            $table->string('special');
+            $table->text('description');
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')->cascadeOnUpdate()->cascadeOnUpdate();
+            $table->unsignedBigInteger('era_id');
+            $table->foreign('era_id')->references('id')->on('eras')->cascadeOnUpdate()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\EraController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PoemController;
 use App\Http\Controllers\Admin\PoetController;
 use App\Http\Controllers\Admin\PoeticTypeController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
         Route::get('/edit/{poeticType}', [PoeticTypeController::class, 'edit'])->name('edit');
         Route::put('/update/{poeticType}', [PoeticTypeController::class, 'update'])->name('update');
         Route::delete('/delete/{poeticType}', [PoeticTypeController::class, 'destroy'])->name('destroy');
+
+    });
+
+    /*--- poems Route---*/
+    Route::group(['prefix' => 'poems', 'as' => 'poem.'], function (){
+        Route::get('/index',[PoemController::class,'index'])->name('index');
+        Route::get('/create',[PoemController::class,'create'])->name('create');
+        Route::post('/store', [PoemController::class, 'store'])->name('store');
+        Route::get('/edit/{poem}', [PoemController::class, 'edit'])->name('edit');
+        Route::put('/update/{poem}', [PoemController::class, 'update'])->name('update');
+        Route::delete('/delete/{poem}', [PoemController::class, 'delete'])->name('delete');
 
     });
 
