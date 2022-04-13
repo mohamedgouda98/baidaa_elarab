@@ -15,7 +15,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PoetRepository implements PoetInterface
@@ -26,7 +25,7 @@ class PoetRepository implements PoetInterface
     private Country $countryModel;
     private era $eraModel;
 
-    public function __construct(Poet $poet, Country $country, era $era)
+    public function __construct(Poet $poet, Country $country, Era $era)
     {
         $this->poetModel    = $poet;
         $this->countryModel = $country;

@@ -10,7 +10,7 @@ class EraRepository implements EraInterface{
 
     use EraTrait;
     private $eraModel;
-    public function __construct(era $era)
+    public function __construct(Era $era)
     {
          $this->eraModel=$era;
     }
@@ -24,7 +24,7 @@ class EraRepository implements EraInterface{
     public function create(){
         return view('admin.era.create');
     }
-    
+
     public function store($request){
         $this->eraModel::create([
             'name'=>$request->name,

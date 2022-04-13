@@ -19,6 +19,6 @@ class Poet extends Model
 
     public function era(): BelongsTo
     {
-        return $this->belongsTo(era::class);
+        return $this->belongsTo(Era::class);
     }
 }

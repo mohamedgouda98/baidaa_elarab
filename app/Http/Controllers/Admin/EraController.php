@@ -11,7 +11,7 @@ use App\Http\Requests\Admin\era\EraUpdateRequest;
 
 class EraController extends Controller
 {
-  
+
 
     protected $EraInterface;
     public function __construct(EraInterface $EraInterface )
@@ -27,22 +27,22 @@ class EraController extends Controller
         return $this->EraInterface->create();
     }
 
-    public function store( EraStoreRequest $request){
+    public function store(EraStoreRequest $request){
         return $this->EraInterface->store($request);
 
     }
 
-    public function edit( era $era){
+    public function edit(Era $era){
         return $this->EraInterface->edit($era);
     }
 
 
-    public function update( era $era, EraUpdateRequest $request){
+    public function update(Era $era, EraUpdateRequest $request){
         return $this->EraInterface->update($era,$request);
     }
 
 
-    public function destroy(era $era){
+    public function destroy(Era $era){
         return $this->EraInterface->destroy($era);
     }
 

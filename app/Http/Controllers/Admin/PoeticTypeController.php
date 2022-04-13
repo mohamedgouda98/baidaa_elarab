@@ -10,7 +10,7 @@ use App\Http\Requests\Admin\PoeticType\PoeticTypeUpdateRequest;
 
 class PoeticTypeController extends Controller
 {
-   
+
     protected $PoeticTypeInterface;
     public function __construct(PoeticTypeInterface $PoeticTypeInterface )
     {
@@ -25,22 +25,22 @@ class PoeticTypeController extends Controller
         return $this->PoeticTypeInterface->create();
     }
 
-    public function store( PoeticTypeStoreRequest $request){
+    public function store(PoeticTypeStoreRequest $request){
         return $this->PoeticTypeInterface->store($request);
 
     }
 
-    public function edit( poetic_type $poeticType){
+    public function edit(Poetic_type $poeticType){
         return $this->PoeticTypeInterface->edit($poeticType);
     }
 
 
-    public function update( poetic_type $poeticType, PoeticTypeUpdateRequest $request){
+    public function update(Poetic_type $poeticType, PoeticTypeUpdateRequest $request){
         return $this->PoeticTypeInterface->update($poeticType,$request);
     }
 
 
-    public function destroy(poetic_type $poeticType){
+    public function destroy(Poetic_type $poeticType){
         return $this->PoeticTypeInterface->destroy($poeticType);
     }
 }

@@ -11,7 +11,7 @@ class poeticTypeRepository implements PoeticTypeInterface{
 
   use PoeticTypeTrait;
     private $poeticTypeModel;
-    public function __construct(poetic_type $poeticType)
+    public function __construct(Poetic_type $poeticType)
     {
          $this->poeticTypeModel=$poeticType;
     }
@@ -25,7 +25,7 @@ class poeticTypeRepository implements PoeticTypeInterface{
     public function create(){
         return view('admin.poeticType.create');
     }
-    
+
     public function store($request){
         $this->poeticTypeModel::create([
             'name'=>$request->name,
