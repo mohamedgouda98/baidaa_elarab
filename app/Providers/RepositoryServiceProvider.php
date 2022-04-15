@@ -41,8 +41,13 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Http\Repositories\Admin\PoeticTypeRepository'
         );
         $this->app->bind(
+            'App\Http\Interfaces\Admin\AdminInterface',
+            'App\Http\Repositories\Admin\AdminRepository'
+          );
+          $this->app->bind(
             'App\Http\Interfaces\Admin\PoemInterface',
             'App\Http\Repositories\Admin\PoemRepository'
+
         );
     }
 

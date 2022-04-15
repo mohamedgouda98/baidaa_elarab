@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\EraController;
@@ -23,6 +24,17 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function (){
    /*---Home Dashboard Route---*/
    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+
+     /*--- Users Route---*/
+     Route::group(['prefix' => 'user', 'as' => 'user.'], function (){
+        Route::get('/index',[AdminController::class,'index'])->name('index');
+        Route::get('/create',[AdminController::class,'create'])->name('create');
+        Route::post('/store', [AdminController::class, 'store'])->name('store');
+        Route::get('/edit/{user}', [AdminController::class, 'edit'])->name('edit');
+        Route::put('/update/{user}', [AdminController::class, 'update'])->name('update');
+        Route::delete('/delete/{user}', [AdminController::class, 'destroy'])->name('destroy');
+
+    });
 
    /*---Countries Route---*/
     Route::group(['prefix' => 'country', 'as' => 'country.'], function (){
