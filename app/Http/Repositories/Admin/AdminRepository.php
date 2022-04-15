@@ -19,7 +19,7 @@ class AdminRepository  implements AdminInterface{
     }
 
     public function index(){
-                 
+
         $users=$this->getAllUsers();
         return view('Admin.users.index',compact('users'));
     }
@@ -34,17 +34,13 @@ class AdminRepository  implements AdminInterface{
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
-                     
         ]);
         Alert::success('success', 'User Added Successfully');
         return redirect(route('admin.user.index'));
-
     }
 
     public function edit($user){
-    
          return view('admin.users.edit',compact('user'));
-
     }
 
     public function update($user, $request){
@@ -55,14 +51,12 @@ class AdminRepository  implements AdminInterface{
         ]);
         Alert::success('success', 'User Updated Successfully');
         return redirect(route('admin.user.index'));
-
     }
 
     public function destroy($user){
         $user->delete($user->id);
         Alert::success('success', 'User DeletedSuccessfully');
-        return redirect()->back();
-         
+        return back();
     }
 
 

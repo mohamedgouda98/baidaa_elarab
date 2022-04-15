@@ -44,8 +44,8 @@ class User extends Authenticatable
 
     public static function rules(){
         return[
-                 'name'=>'required|string|min:3',
-                 'password'=>'required|min:8',
+             'name'=>'required|string|min:3',
+             'password'=>'required|min:8',
         ];
     }
 }
